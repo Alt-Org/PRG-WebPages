@@ -11,53 +11,52 @@ import { getOptions, languages, cookieName } from './settings';
 const runsOnServerSide = typeof window === 'undefined';
 
 export const i18n = i18next
-    .use(initReactI18next)
-    .use(LanguageDetector)
-    .use(
-        resourcesToBackend(
-             (language: string, namespace: string) =>
-               import(`./locales/${language}/${namespace}.json`)
-        ),
-    )
-    // .use(LocizeBackend) // locize backend could be used on client side, but prefer to keep it in sync with server side
-    .init({
-        ...getOptions(),
-        lng: undefined, // let detect the language on client side
-        detection: {
-            order: ['path', 'htmlTag', 'cookie', 'navigator'],
-        },
-        preload: runsOnServerSide ? languages : [],
-    });
+  .use(initReactI18next)
+  .use(LanguageDetector)
+  .use(
+    resourcesToBackend(
+      (language: string, namespace: string) => import(`../locales/${language}/${namespace}.json`),
+    ),
+  )
+  // .use(LocizeBackend) // locize backend could be used on client side, but prefer to keep it in sync with server side
+  .init({
+    ...getOptions(),
+    lng: undefined, // let detect the language on client side
+    detection: {
+      order: ['path', 'htmlTag', 'cookie', 'navigator'],
+    },
+    preload: runsOnServerSide ? languages : [],
+  });
 
 /**
  * Hook for using i18n with client client-side components
  */
 export function useTranslation(ns: string, options?: any) {
-    const params = useParams();
-    const lng = params.lng as string;
-    const [cookies, setCookie] = useCookies([cookieName]);
-    const ret = useTranslationOrg(ns, options);
-    const { i18n } = ret;
-    if (runsOnServerSide && lng && i18n.resolvedLanguage !== lng) {
-        i18n.changeLanguage(lng);
-    } else {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        const [activeLng, setActiveLng] = useState(i18n.resolvedLanguage);
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        useEffect(() => {
-            if (activeLng === i18n.resolvedLanguage) return;
-            setActiveLng(i18n.resolvedLanguage);
-        }, [activeLng, i18n.resolvedLanguage]);
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        useEffect(() => {
-            if (!lng || i18n.resolvedLanguage === lng) return;
-            i18n.changeLanguage(lng);
-        }, [lng, i18n]);
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        useEffect(() => {
-            if (cookies.i18next === lng) return;
-            setCookie(cookieName, lng, { path: '/' });
-        }, [lng, cookies.i18next, setCookie]);
-    }
-    return ret;
+  const params = useParams();
+  const lng = params.lng as string;
+  const [cookies, setCookie] = useCookies([cookieName]);
+  const ret = useTranslationOrg(ns, options);
+  const { i18n } = ret;
+  if (runsOnServerSide && lng && i18n.resolvedLanguage !== lng) {
+    i18n.changeLanguage(lng);
+  } else {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [activeLng, setActiveLng] = useState(i18n.resolvedLanguage);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+      if (activeLng === i18n.resolvedLanguage) return;
+      setActiveLng(i18n.resolvedLanguage);
+    }, [activeLng, i18n.resolvedLanguage]);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+      if (!lng || i18n.resolvedLanguage === lng) return;
+      i18n.changeLanguage(lng);
+    }, [lng, i18n]);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+      if (cookies.i18next === lng) return;
+      setCookie(cookieName, lng, { path: '/' });
+    }, [lng, cookies.i18next, setCookie]);
+  }
+  return ret;
 }

@@ -15,14 +15,14 @@
     "test:ci-retry-failed": "jest --ci --onlyFailures --config=jest.ci-config.ts",
     "test:watch": "jest --watch",
     "check:circular": "madge --circular --extensions ts,tsx --ts-config ./tsconfig.json src/",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "lint:staged": "lint-staged",
     "sort-imports": "ts-node altzone-cli/sortImports/processFiles.ts"
   },
   "lint-staged": {
     "*.{js,ts,tsx,scss,css,md}": [
-      "next lint:fix"
+      "eslint --fix"
     ]
   },
   "dependencies": {
@@ -78,14 +78,14 @@
     "@typescript-eslint/eslint-plugin": "^8.72.1",
     "@typescript-eslint/parser": "^8.72.1",
     "dotenv": "^16.4.5",
-    "eslint": "^8",
-    "eslint-config-next": "14.0.1",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.5",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.1",
     "lint-staged": "^15.2.10",
     "madge": "^7.0.0",
-    "prettier": "^3.3.3",
+    "prettier": "^3.9.10",
     "ts-morph": "^17.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5"
