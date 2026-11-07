@@ -14,13 +14,13 @@
  * @property {string} openAiApiKey - The URL for the LLM backend. Defaults to an empty string if not provided.
  */
 export const envHelper = {
-  isDevMode: process.env.NODE_ENV === 'development',
-  apiLink: process.env.NEXT_PUBLIC_API_LINK || '',
-  appDomain: process.env.NEXT_PUBLIC_APP_DOMAIN || 'proyaleg.fi',
-  companyName: process.env.COMPANY_NAME || "Psyche's Royale Gaming ry",
-  strapiHost: process.env.NEXT_PUBLIC_STRAPI_HOST || '',
-  directusHost: process.env.NEXT_PUBLIC_DIRECTUS_HOST || '',
-  openAiApiKey: process.env.NEXT_PUBLIC_LLM_HOST || '',
-  gaProdId: process.env.NEXT_PUBLIC_GA_PROD_ID || '',
-  gaDevId: process.env.NEXT_PUBLIC_GA_DEV_ID || '',
+    isDevMode: process.env.NODE_ENV === 'development',
+    apiLink: process.env.NEXT_PUBLIC_API_LINK || '',
+    appDomain: process.env.NEXT_PUBLIC_APP_DOMAIN || 'proyaleg.fi',
+    companyName: process.env.COMPANY_NAME || "Psyche's Royale Gaming ry",
+    strapiHost: process.env.NEXT_PUBLIC_STRAPI_HOST || '',
+    directusHost: process.env.NEXT_PUBLIC_DIRECTUS_HOST || '',
+    openAiApiKey: process.env.NEXT_PUBLIC_LLM_HOST || '',
+    gaProdId: process.env.NEXT_PUBLIC_GA_PROD_ID || '',
+    gaDevId: process.env.NEXT_PUBLIC_GA_DEV_ID || '',
 } as const;

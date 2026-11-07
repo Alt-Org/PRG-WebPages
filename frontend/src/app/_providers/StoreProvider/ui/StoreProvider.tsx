@@ -1,23 +1,18 @@
-import { DeepPartial } from '@reduxjs/toolkit';
-import { ReactNode } from 'react';
+'use client';
+import { useEffect, useState, type ReactNode } from 'react';
 import { Provider } from 'react-redux';
-import { StateSchema } from '../config/StateSchema';
-import { createReduxStore } from '../config/store';
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { createReduxStore, type InitialState } from '../config/store';
 
 interface StoreProviderProps {
-  children?: ReactNode;
-  // for testing purposes
-  initialState?: DeepPartial<StateSchema>;
+    children?: ReactNode;
+    initialState?: InitialState;
 }
 
-// export const store = createReduxStore();
-export const { store, persistor } = createReduxStore();
+export const StoreProvider = ({ children, initialState }: StoreProviderProps) => {
+    const [store] = useState(() => createReduxStore(initialState));
 
-export const StoreProvider = (props: StoreProviderProps) => {
-  const {
-    children,
-    // initialState
-  } = props;
-  // const store = createReduxStore(initialState as StateSchema);
-  return <Provider store={store}>{children}</Provider>;
+    useEffect(() => setupListeners(store.dispatch), [store]);
+
+    return <Provider store={store}>{children}</Provider>;
 };

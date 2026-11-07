@@ -15,110 +15,111 @@ import { envHelper } from '@/shared/const/envHelper';
 // });
 
 const markoFont = localFont({
-  src: [
-    {
-      path: '../fonts/MarkoOne-Regular.ttf',
-      weight: '400',
-      style: 'normal',
-    },
-  ],
-  variable: '--font-family-title',
-  fallback: ['system-ui', 'Arial', 'sans-serif'],
-  display: 'swap',
+    src: [
+        {
+            path: '../fonts/MarkoOne-Regular.ttf',
+            weight: '400',
+            style: 'normal',
+        },
+    ],
+    variable: '--font-family-title',
+    fallback: ['system-ui', 'Arial', 'sans-serif'],
+    display: 'swap',
 });
 
 const dmSans = localFont({
-  src: [
-    {
-      path: '../fonts/DMSans-VariableFont_opsz,wght.ttf',
-      style: 'normal',
-    },
-  ],
-  variable: '--font-family-secondary',
-  fallback: ['system-ui', 'Arial', 'sans-serif'],
-  display: 'swap',
+    src: [
+        {
+            path: '../fonts/DMSans-VariableFont_opsz,wght.ttf',
+            style: 'normal',
+        },
+    ],
+    variable: '--font-family-secondary',
+    fallback: ['system-ui', 'Arial', 'sans-serif'],
+    display: 'swap',
 });
 
 const urbanist = localFont({
-  src: [
-    {
-      path: '../fonts/Urbanist-VariableFont_wght.ttf',
-      weight: '700',
-      style: 'normal',
-    },
-  ],
-  variable: '--font-family-main',
-  fallback: ['system-ui', 'Arial', 'sans-serif'],
-  display: 'swap',
+    src: [
+        {
+            path: '../fonts/Urbanist-VariableFont_wght.ttf',
+            weight: '700',
+            style: 'normal',
+        },
+    ],
+    variable: '--font-family-main',
+    fallback: ['system-ui', 'Arial', 'sans-serif'],
+    display: 'swap',
 });
 
 const rubik = localFont({
-  src: [
-    {
-      path: '../fonts/Rubik-VariableFont_wght.ttf',
-      weight: '400',
-      style: 'normal',
-    },
-  ],
-  variable: '--font-family-texts',
-  fallback: ['system-ui', 'Arial', 'sans-serif'],
-  display: 'swap',
+    src: [
+        {
+            path: '../fonts/Rubik-VariableFont_wght.ttf',
+            weight: '400',
+            style: 'normal',
+        },
+    ],
+    variable: '--font-family-texts',
+    fallback: ['system-ui', 'Arial', 'sans-serif'],
+    display: 'swap',
 });
 
 export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
 };
 
 export function generateStaticParams() {
-  return languages.map((lng) => ({ lng }));
+    return languages.map((lng) => ({ lng }));
 }
 
 export function generateMetadata(): Metadata {
-  return {
-    metadataBase: new URL(baseUrl),
-    openGraph: {
-      ...defaultOpenGraph,
-    },
-  };
+    return {
+        metadataBase: new URL(baseUrl),
+        openGraph: {
+            ...defaultOpenGraph,
+        },
+    };
 }
 
 interface Props {
-  children: ReactNode;
-  params: Promise<{ lng: string }>;
+    children: ReactNode;
+    params: Promise<{ lng: string }>;
 }
 
 export default async function RootLayout(props: Props) {
-  const { children, params } = props;
-  const { lng } = await params;
+    const { children, params } = props;
+    const { lng } = await params;
 
-  const GA_ID = envHelper.isDevMode ? envHelper.gaDevId : envHelper.gaProdId;
+    const GA_ID = envHelper.isDevMode ? envHelper.gaDevId : envHelper.gaProdId;
 
-  return (
-    <html
-      lang={lng}
-      dir={dir(lng)}
-      className={`${urbanist.variable} ${rubik.variable} ${markoFont.variable} ${dmSans.variable}`}
-    >
-      <head>
-        <link
-          rel="icon"
-          href="/icons/alt_logo.ico"
-          sizes="72x72"
-        />
-        <link
-          rel="apple-touch-icon"
-          href="/icons/alt_logo.ico"
-          type="image"
-          sizes="72x72"
-        />
-      </head>
-      <body>
-        <Providers>{children}</Providers>
-      </body>
-      {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
-    </html>
-  );
+    return (
+        <html
+            lang={lng}
+            dir={dir(lng)}
+            data-scroll-behavior="smooth"
+            className={`${urbanist.variable} ${rubik.variable} ${markoFont.variable} ${dmSans.variable}`}
+        >
+            <head>
+                <link
+                    rel="icon"
+                    href="/icons/alt_logo.ico"
+                    sizes="72x72"
+                />
+                <link
+                    rel="apple-touch-icon"
+                    href="/icons/alt_logo.ico"
+                    type="image"
+                    sizes="72x72"
+                />
+            </head>
+            <body>
+                <Providers>{children}</Providers>
+            </body>
+            {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
+        </html>
+    );
 }

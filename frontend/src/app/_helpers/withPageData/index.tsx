@@ -58,21 +58,21 @@ import { ComponentType } from 'react';
 // }
 
 export function withPageData<PageProps>(
-  PageComponent: ComponentType<PageProps>,
-  getPage: (lng: string, ...args: any) => Promise<{ page: PageProps }>,
+    PageComponent: ComponentType<PageProps>,
+    getPage: (lng: string, ...args: any) => Promise<{ page: PageProps }>,
 ): ComponentType<DefaultAppRouterProps> {
-  return async function PageWithHOC(props: DefaultAppRouterProps) {
-    const resolvedParams = await props.params;
-    const { lng, ...restParams } = resolvedParams;
+    return async function PageWithHOC(props: DefaultAppRouterProps) {
+        const resolvedParams = await props.params;
+        const { lng, ...restParams } = resolvedParams;
 
-    // If getPage expects the remaining params as individual arguments
-    const data = await getPage(lng, ...Object.values(restParams));
+        // If getPage expects the remaining params as individual arguments
+        const data = await getPage(lng, ...Object.values(restParams));
 
-    return (
-      <PageComponent
-        {...data.page}
-        {...props}
-      />
-    );
-  };
+        return (
+            <PageComponent
+                {...data.page}
+                {...props}
+            />
+        );
+    };
 }

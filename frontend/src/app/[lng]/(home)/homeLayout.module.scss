@@ -3,13 +3,13 @@
         margin-top: 12vh !important;
     }
 
-    @media ((max-width: breakpoint(xl) ) and (min-width: breakpoint(sm))) {
+    @media ((max-width: breakpoint(lg) ) and (min-width: breakpoint(sm))) {
         margin-top: 15vh !important;
     }
-    @media ((max-width: breakpoint(xxl) ) and (min-width: breakpoint(xl))) {
+    @media ((max-width: breakpoint(xl) ) and (min-width: breakpoint(lg))) {
         margin-top: 17vh !important;
     }
-    @media ((min-width: breakpoint(xxl)) and (max-width: 1500px)) {
+    @media ((min-width: breakpoint(xl)) and (max-width: 1500px)) {
         margin-top: 18vh;
     }
 

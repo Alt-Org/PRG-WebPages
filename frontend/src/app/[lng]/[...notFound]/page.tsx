@@ -2,11 +2,11 @@
 import { useParams, redirect } from 'next/navigation';
 
 export default function NotFoundCatchAll() {
-  const params = useParams();
+    const params = useParams();
 
-  if (params?.lng) {
-    redirect(`/${params.lng}/coming`);
-  }
+    if (params?.lng) {
+        redirect(`/${params.lng}/coming`);
+    }
 
-  return null;
+    return null;
 }

@@ -102,12 +102,6 @@ const eslintConfig = [
     },
   },
   {
-    files: ['src/widgets/Navbar/**/NavbarBuilder.{ts,tsx}'],
-    rules: {
-      'max-params': ['warn', 4],
-    },
-  },
-  {
     files: ['**/*.stories.{ts,tsx}'],
     rules: {
       '@typescript-eslint/ban-ts-comment': 'off',
