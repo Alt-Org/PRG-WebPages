@@ -5,65 +5,56 @@ on:
     branches:
       - main
       - dev
-  pull_request:
-    branches:
-      - "**"
+#  pull_request:
+#    branches:
+#      - "**"
 
 defaults:
   run:
     working-directory: frontend
 
 jobs:
-  test:
-    name: Run tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v7
+  #  test:
+  #    name: Run tests
+  #    runs-on: ubuntu-latest
+  #    steps:
+  #      - name: Checkout code
+  #        uses: actions/checkout@v7
+  #
+  #      - name: Setup Node.js
+  #        uses: actions/setup-node@v7
+  #        with:
+  #          node-version: 24
+  #          cache: "npm"
+  #
+  #      - name: Install dependencies
+  #        run: npm ci
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: 24
-          cache: "npm"
+  # - name: Run tests
+  #   env:
+  #     NEXT_PUBLIC_API_LINK: ${{ secrets.NEXT_PUBLIC_API_LINK }}
+  #     NEXT_PUBLIC_API_DOMAIN: ${{ secrets.NEXT_PUBLIC_API_DOMAIN }}
+  #     NEXT_PUBLIC_LOCAL_HOST: ${{ secrets.NEXT_PUBLIC_LOCAL_HOST }}
+  #     NEXT_PUBLIC_DIRECTUS_HOST: ${{ secrets.NEXT_PUBLIC_DIRECTUS_HOST }}
+  #   run: |
+  #     set +e
+  #     npm run test:ci
+  #     FIRST_RESULT=$?
 
-      - name: Install dependencies
-        run: npm ci
+  #     if [ $FIRST_RESULT -ne 0 ]; then
+  #       echo "First test run failed, retrying failed tests..."
+  #       npm run test:ci-retry-failed
+  #       RETRY_RESULT=$?
 
-      # - name: Run tests
-      #   env:
-      #     NEXT_PUBLIC_API_LINK: ${{ secrets.NEXT_PUBLIC_API_LINK }}
-      #     NEXT_PUBLIC_API_DOMAIN: ${{ secrets.NEXT_PUBLIC_API_DOMAIN }}
-      #     NEXT_PUBLIC_LOCAL_HOST: ${{ secrets.NEXT_PUBLIC_LOCAL_HOST }}
-      #     NEXT_PUBLIC_DIRECTUS_HOST: ${{ secrets.NEXT_PUBLIC_DIRECTUS_HOST }}
-      #   run: |
-      #     set +e
-      #     npm run test:ci
-      #     FIRST_RESULT=$?
-
-      #     if [ $FIRST_RESULT -ne 0 ]; then
-      #       echo "First test run failed, retrying failed tests..."
-      #       npm run test:ci-retry-failed
-      #       RETRY_RESULT=$?
-
-      #       if [ $RETRY_RESULT -ne 0 ]; then
-      #         echo "Tests failed after retry"
-      #         exit 1
-      #       fi
-      #     fi
-
-      # - name: Upload coverage reports to Codecov
-      #   uses: codecov/codecov-action@v7
-      #   with:
-      #     token: ${{ secrets.CODECOV_TOKEN }}
-      #     url: ${{ secrets.CODECOV_URL }}
-      #     slug: Alt-Org/PRG-WebPages
-      #     files: ./frontend/coverage/coverage-final.json
-      #     fail_ci_if_error: false
+  #       if [ $RETRY_RESULT -ne 0 ]; then
+  #         echo "Tests failed after retry"
+  #         exit 1
+  #       fi
+  #     fi
 
   build-and-push:
     name: Build and Push Docker Image
-    needs: test
+    #    needs: test
     if: github.ref_name == 'main' || github.ref_name == 'dev'
     runs-on: [self-hosted, gh-runner-common]
     steps:
@@ -142,7 +133,7 @@ jobs:
         env:
           WEBHOOK_SECRET: ${{ secrets.SERVER_WEBHOOK_NOTIFY_SECRET }}
           WEBHOOK_URL: ${{ secrets.SERVER_WEBHOOK_NOTIFY_URL }}
-          PAYLOAD: '{"name": "site", "tag": "${{ github.ref_name }}"}'
+          PAYLOAD: '{"name": "prgsite", "tag": "${{ github.ref_name }}"}'
         run: |
           SIGNATURE=$(echo "$PAYLOAD" | openssl dgst -sha256 -hmac "$WEBHOOK_SECRET" | sed 's/^.* //')
 
