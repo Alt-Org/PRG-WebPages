@@ -1,0 +1,1 @@
+this file is only created to setup the CI, when the public folder will have some other data, this file can be removed
