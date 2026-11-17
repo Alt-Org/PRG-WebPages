@@ -63,6 +63,7 @@ const ComingPage = (props: Props) => {
                     </div>
                     <div className={cls.images} />
                 </div>
+                <div>Test</div>
             </div>
         </main>
     );
