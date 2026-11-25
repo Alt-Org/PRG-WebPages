@@ -26,7 +26,7 @@
     width: 1440px;
     max-width: 100%;
     z-index: 1;
-    padding-top: 0;
+    padding-top: 100px;
     display: flex;
     justify-content: center;
 }
@@ -41,9 +41,8 @@
 }
 
 .curvedTextPath {
-    font-family: var(--font-family-title);
-    font-size: 96px;
-    fill: var(--content-primary);
+    font: var(--font-dela-8xl);
+    fill: var(--primary-color);
     font-weight: 400;
 }
 
@@ -83,7 +82,7 @@
     transform: translate(-50%, -50%);
     font-family: var(--font-family-title);
     font-size: clamp(20px, 11cqi, 64px);
-    color: var(--white);
+    color: var(--secondary-color);
     text-align: center;
     white-space: nowrap;
     pointer-events: none;

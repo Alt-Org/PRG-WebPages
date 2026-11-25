@@ -19,6 +19,7 @@ const nextConfig = {
     // experimental: {
     //     webpackBuildWorker: true
     // },
+    outputFileTracingRoot: __dirname,
 };
 
 module.exports = nextConfig;

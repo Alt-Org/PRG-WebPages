@@ -7,12 +7,14 @@
     --primary-color: #b400d8;
     --primary-color-variant-hover: #8400c0;
     --secondary-color: #c27aff;
+    --tertiary-color: #00c2c7;
+    --social-link-gradient: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
 
     // Background colors
     --background-dark: #0d0d0d;
     --background: #1c1c1c;
     --background-light: #f0f0f0;
-    --background-event: #00c2c7;
+    --background-event: var(--tertiary-color);
 
     // Text colors
     --text-body-light: #c9bec6;
@@ -20,31 +22,15 @@
     --header-light: #ffffff;
     --header-dark: #0d0d0d;
 
+    // Shadows
+    --shadow-color: #0d0d0d;
+    --shadow-hard: 4px 4px 0 var(--shadow-color);
+    --shadow-soft: 0 4px 4px var(--shadow-color);
+
     // ==========================================
     // Status Colors
     // ==========================================
 
     --error: #ff0010;
     --success: #10d131;
-
-    // ==========================================
-    // Heading Styles
-    // ==========================================
-
-    // Font families
-    --heading-font: 'Dela Gothic One', cursive;
-    --body-font: 'Inter', sans-serif;
-
-
-    // ==========================================
-    // Additional Global Values
-    // ==========================================
-
-    // Box-shadow values for cards and buttons
-    --xs: 1px 1px 0px 0px rgba(0, 0, 0, 1);
-    --s: 2px 4px 0px 0px rgba(0, 0, 0, 1);
-    --m: 4px 8px 0px 0px rgba(0, 0, 0, 1);
-    --l: 6px 12px 0px 0px rgba(0, 0, 0, 1);
-    --s-blur: 0px 3px 10px 5px rgba(0, 0, 0, 0.5);
-
 }

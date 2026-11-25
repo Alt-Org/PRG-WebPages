@@ -50,35 +50,29 @@
     --font-jost-xxl: 700 var(--font-size-xxl) / var(--font-line-xxl) var(--font-family-nav);
     --font-jost-4xl: 700 var(--font-size-4xl) / var(--font-line-4xl) var(--font-family-nav);
 
-    //figma spacers
-    --spacer300: 16px;
-
-    // sizes
-    --navbar-height: 150px;
-    //--navbar-height: 20vh;
-    //--navbar-logo-height: 17vh;
-    --navbar-logo-height: 200px;
-    --navbar-logo-width: 200px;
-    //--sidebar-width: 1000px;
-    --sidebar-width: 340px;
-    --sidebar-width-collapsed: 0px;
-
     // indexes
     --modal-z-index: 10;
     --sidebar-z-index: 30;
     --navbar-z-index: 29;
     --sideButton-z-index: 5;
 
+    // borders
+    --border-hair: 1px;
+    --border-mid: 1.5px;
+    --border-strong: 2px;
+    --border-heavy: 3px;
+
     // border-radius
-    --border-radius-custom: 15px;
-    --border-radius-figma: 25px;
-    --border-radius-figmadesktop: 12px;
+    --border-radius-xs: 2px;
+    --border-radius-sm: 8px;
+    --border-radius-md: 16px;
+    --border-radius-lg: 25px;
+    --border-radius-full: 100px;
 
     // Base Spacing
-    --spacing-0: 0px;
-    --spacing-50: 2px;
     --spacing-100: 4px;
     --spacing-200: 8px;
+    --spacing-225: 10px;
     --spacing-250: 12px;
     --spacing-300: 16px;
     --spacing-400: 24px;
@@ -86,6 +80,7 @@
     --spacing-600: 48px;
     --spacing-700: 64px;
     --spacing-800: 96px;
+    --spacing-900: 240px;
 
     //animations
     --animation-link-hover-scale: 1.05;
