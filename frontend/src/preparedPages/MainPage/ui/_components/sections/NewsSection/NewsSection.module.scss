@@ -27,7 +27,7 @@
 .card {
     display: flex;
     flex-direction: row;
-    background: var(--background-secondary-color);
+    background: var(--background-light);
     border-radius: var(--border-radius-custom);
     overflow: hidden;
     max-width: 500px;
@@ -78,7 +78,7 @@
         padding: 1rem;
     }
     .cardTitle {
-        font-size: var(--font-line-xl);
+        font-size: var(--font-line-xxxl);
     }
     .cardBody {
         font-size: 0.9rem;
