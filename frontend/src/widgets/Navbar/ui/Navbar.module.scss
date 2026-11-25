@@ -1,0 +1,16 @@
+.navbarContainer {
+    background-color: var(--background-dark);
+    width: 100%;
+}
+
+.navbar {
+    @include content-container;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-300);
+}
+
+.navLinks {
+    list-style: none;
+}

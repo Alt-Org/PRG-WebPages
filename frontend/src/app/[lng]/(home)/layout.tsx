@@ -8,7 +8,7 @@ type Props = {
 
 export default function HomeLayout({ children }: Props) {
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <div>
             <div className={cls.joinUsLayout}>{children}</div>
         </div>
     );
