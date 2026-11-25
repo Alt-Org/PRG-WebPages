@@ -8,6 +8,7 @@ import localFont from 'next/font/local';
 import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { envHelper } from '@/shared/const/envHelper';
+import SiteLayout from '../_ui/SiteLayout/SiteLayout';
 
 // const openSans = Open_Sans({
 //   subsets: ['latin'],
@@ -93,18 +94,20 @@ export default async function RootLayout(props: Props) {
             <head>
                 <link
                     rel="icon"
-                    href="/icons/alt_logo.ico"
+                    href="/icons/prg-logo.ico"
                     sizes="72x72"
                 />
                 <link
                     rel="apple-touch-icon"
-                    href="/icons/alt_logo.ico"
+                    href="/icons/prg-logo.ico"
                     type="image"
                     sizes="72x72"
                 />
             </head>
-            <body>
-                <Providers>{children}</Providers>
+            <body className="app-main-theme">
+                <Providers>
+                    <SiteLayout>{children}</SiteLayout>
+                </Providers>
             </body>
             {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
         </html>
