@@ -14,10 +14,10 @@ import { envHelper } from '@/shared/const/envHelper';
 //   display: 'swap',
 // });
 
-const markoFont = localFont({
+const delaGothicOne = localFont({
     src: [
         {
-            path: '../fonts/MarkoOne-Regular.ttf',
+            path: '../fonts/DelaGothicOne-Regular.ttf',
             weight: '400',
             style: 'normal',
         },
@@ -27,10 +27,10 @@ const markoFont = localFont({
     display: 'swap',
 });
 
-const dmSans = localFont({
+const interFont = localFont({
     src: [
         {
-            path: '../fonts/DMSans-VariableFont_opsz,wght.ttf',
+            path: '../fonts/Inter-VariableFont_opsz,wght.ttf',
             style: 'normal',
         },
     ],
@@ -39,28 +39,15 @@ const dmSans = localFont({
     display: 'swap',
 });
 
-const urbanist = localFont({
+const jostFont = localFont({
     src: [
         {
-            path: '../fonts/Urbanist-VariableFont_wght.ttf',
+            path: '../fonts/Jost-VariableFont_wght.ttf',
             weight: '700',
             style: 'normal',
         },
     ],
-    variable: '--font-family-main',
-    fallback: ['system-ui', 'Arial', 'sans-serif'],
-    display: 'swap',
-});
-
-const rubik = localFont({
-    src: [
-        {
-            path: '../fonts/Rubik-VariableFont_wght.ttf',
-            weight: '400',
-            style: 'normal',
-        },
-    ],
-    variable: '--font-family-texts',
+    variable: '--font-family-nav',
     fallback: ['system-ui', 'Arial', 'sans-serif'],
     display: 'swap',
 });
@@ -101,7 +88,7 @@ export default async function RootLayout(props: Props) {
             lang={lng}
             dir={dir(lng)}
             data-scroll-behavior="smooth"
-            className={`${urbanist.variable} ${rubik.variable} ${markoFont.variable} ${dmSans.variable}`}
+            className={`${interFont.variable} ${jostFont.variable} ${delaGothicOne.variable}`}
         >
             <head>
                 <link
